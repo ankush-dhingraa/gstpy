@@ -1,7 +1,25 @@
 from tabulate import tabulate
 #class
 class GST:
+    """
+    GST Calculator Module for Exclusive and Inclusive Tax Computation.
+
+    This class supports calculation and display of GST for both exclusive and inclusive pricing models.
+    Supports input as int, list, or dict (with or without quantity).
+    """
     def __init__(self,items=0,rate=18,mode="exclusive"):
+        """
+        Initialize the GST instance and compute GST if items provided.
+
+        Parameters:
+        ----------
+        items : int, list, or dict
+            The item(s) to compute GST on. Can be a single int, a list of values, or a dict with item names.
+        rate : float, optional
+            GST rate in percentage. Default is 18%.
+        mode : str, optional
+            GST calculation mode: 'exclusive' or 'inclusive'. Default is 'exclusive'.
+        """
         self.items = items
         self.rate = rate
         self.type = "exclusive"
@@ -109,6 +127,27 @@ class GST:
 
     #exclusive() method solve exclusive gst
     def exclusive(self,items,rate=18,out="list"):
+        """
+        Calculate GST using the Exclusive method (price does not include tax).
+
+        Parameters:
+        ----------
+        items : int, list, or dict
+            Item(s) to compute GST for. Supports:
+                - list of amounts (e.g., [100, 200])
+                - list of tuples with quantity (e.g., [("item", 100, 2)])
+                - dict of item-price pairs (e.g., {"item1": 100})
+                - dict of item: [price, qty] (e.g., {"item1": [100, 2]})
+        rate : float, optional
+            GST rate in percentage. Default is 18%.
+        out : str, optional
+            Output format: 'list', 'dict', or 'table'. Default is 'list'.
+
+        Returns:
+        -------
+        list or dict or None
+            Returns GST data in the selected format. If 'table', prints table and returns None.
+        """
         qty = False
         self.exclusive_data = []
         self.exclusive_data_qty = []
@@ -190,12 +229,28 @@ class GST:
                 self.display_data(data=self.exclusive_data_qty, rate=rate,qty=True)
             else:
                 self.display_data(data=self.exclusive_data, rate=rate)
-    '''
-        inclusive method
-    '''            
+
+    #inclusive method          
 
     #inclusive() method solve inclusive gst
     def inclusive(self,items,rate=18,out="list"):
+        """
+        Calculate GST using the Inclusive method (price includes tax).
+
+        Parameters:
+        ----------
+        items : int, list, or dict
+            Item(s) to compute GST for. Same formats as exclusive().
+        rate : float, optional
+            GST rate in percentage. Default is 18%.
+        out : str, optional
+            Output format: 'list', 'dict', or 'table'. Default is 'list'.
+
+        Returns:
+        -------
+        list or dict or None
+            Returns GST data in the selected format. If 'table', prints table and returns None.
+        """
         qty = False
         self.inclusive_data = []
         self.inclusive_data_qty = []
@@ -293,7 +348,37 @@ class GST:
 
  #exgst function return a exclusive gst rate single value   
 def exgst(price, rate = 18):
+    """
+    Calculate the GST amount from a base price (excluding GST).
+
+    Parameters:
+        base_price (float): The price before GST is applied.
+        gst_rate (float): The GST rate as a percentage (e.g., 18 for 18%).
+
+    Returns:
+        float: The GST amount calculated from the base price.
+
+    Example:
+        >>> gst = exgst(1000, 18)
+        >>> print(gst)
+        180.0
+    """
     return (price*rate) / 100
  #ingst function return a inclusive gst rate single value
 def ingst(price,rate = 18):
+    """
+    Calculate the GST amount from a GST-inclusive total price.
+
+    Parameters:
+        total_price (float): The total price that includes GST.
+        gst_rate (float): The GST rate as a percentage (e.g., 18 for 18%).
+
+    Returns:
+        float: The GST amount included in the total price.
+
+    Example:
+        >>> gst = ingst(1180, 18)
+        >>> print(gst)
+        180.0
+    """
     return (price*rate) / (100 + rate)
