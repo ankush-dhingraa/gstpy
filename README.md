@@ -116,7 +116,7 @@ Calculates GST using the inclusive method (price already includes GST).
 &nbsp;
 &nbsp;
 
-[Download Documentation]([link_to_documentation.pdf](https://drive.google.com/file/d/1lzf739rKKWUfgOODhblDckchwvmaKUYR/view?usp=sharing))
+[![Download Documentation](https://img.shields.io/badge/Download%20Documentation-blue.svg)](https://drive.google.com/file/d/1lzf739rKKWUfgOODhblDckchwvmaKUYR/view?usp=sharing)
 &nbsp;
 &nbsp;
 
