@@ -6,7 +6,6 @@ The `gstpy` module provides an easy and flexible way to calculate GST (Goods and
 
 You can install this module using pip:
 &nbsp;
-&nbsp;
 
 ```bash
 pip install gstpy
@@ -18,18 +17,15 @@ pip install gstpy
 
 ## Constructor
 &nbsp;
-&nbsp;
 ```GST(items=0, rate=18, mode="exclusive")```
 
 Initializes a GST object.
-&nbsp;
 &nbsp;
 
 ### Parameters:
 - **items**: (int, list, dict) — Item(s) to calculate GST on. Defaults to 0.
 - **rate**: (int, float) — GST rate. Defaults to 18.
 - **mode**: (str) — Either "exclusive" or "inclusive" to specify GST type. Defaults to "exclusive".
-&nbsp;
 &nbsp;
 
 ### Behavior:
@@ -39,18 +35,13 @@ Initializes a GST object.
   - Dictionary with item names as keys and prices or [price, quantity] as values
   - Single integer price
 &nbsp;
-&nbsp;
 
 ## Methods
-&nbsp;
 &nbsp;
 
 ### 1. exclusive
 &nbsp;
-&nbsp;
-
 Calculates GST using the exclusive method (GST is added to the price).
-&nbsp;
 &nbsp;
 
 #### Parameters:
@@ -58,12 +49,10 @@ Calculates GST using the exclusive method (GST is added to the price).
 - **rate**: GST rate (int, float)
 - **out**: Output format - "list", "dict", or "table"
 &nbsp;
-&nbsp;
 
 #### Returns:
 - List or dictionary of results (if out is "list" or "dict")
 - Table printed on screen (if out is "table")
-&nbsp;
 &nbsp;
 
 #### Format Supported:
@@ -72,15 +61,12 @@ Calculates GST using the exclusive method (GST is added to the price).
 - List of [item_name, price]
 - List of [item_name, price, qty]
 - Dict of {item_name: price} or {item_name: [price, qty]}
-&nbsp;
 &nbsp;
 
 ### 2. inclusive
 &nbsp;
-&nbsp;
 
 Calculates GST using the inclusive method (price already includes GST).
-&nbsp;
 &nbsp;
 
 #### Parameters:
@@ -88,12 +74,10 @@ Calculates GST using the inclusive method (price already includes GST).
 - **rate**: GST rate (int, float)
 - **out**: Output format - "list", "dict", or "table"
 &nbsp;
-&nbsp;
 
 #### Returns:
 - List or dictionary of results (if out is "list" or "dict")
 - Table printed on screen (if out is "table")
-&nbsp;
 &nbsp;
 
 #### Format Supported:
@@ -103,10 +87,8 @@ Calculates GST using the inclusive method (price already includes GST).
 - List of [item_name, price, qty]
 - Dict of {item_name: price} or {item_name: [price, qty]}
 &nbsp;
-&nbsp;
 
 ## Special Functions
-&nbsp;
 &nbsp;
 
 - `ingst(total_price, gst_rate)` → returns only the GST amount
@@ -114,22 +96,18 @@ Calculates GST using the inclusive method (price already includes GST).
 
 ## Documentation
 &nbsp;
-&nbsp;
 
 [![Download Documentation](https://img.shields.io/badge/Download%20Documentation-blue.svg)](https://drive.google.com/file/d/1lzf739rKKWUfgOODhblDckchwvmaKUYR/view?usp=sharing)
-&nbsp;
 &nbsp;
 
 You can download the full documentation for the `gstpy` module by clicking the button above.
 
 ## Author
 &nbsp;
-&nbsp;
 
 Developed by: Ankush  
 - [LinkedIn Profile](https://www.linkedin.com/in/ankush-dhingraa/)  
 - [GitHub Profile](https://github.com/ankush-dhingraa)  
-&nbsp;
 &nbsp;
 
 For any issues or bug reports, please [open an issue on GitHub.](https://github.com/ankush-dhingraa/gstpy/issues)
