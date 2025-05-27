@@ -1,131 +1,141 @@
-# gstpy
+# gstpy Module
+&nbsp;
+&nbsp;
 
-A simple Python module to calculate GST (Goods and Services Tax) in both **inclusive** and **exclusive** modes.  
-It provides clear outputs either as a list or as a formatted table.
-
----
-
-## Features
-
-- Calculate **inclusive GST** (GST already included in the given amount).
-- Calculate **exclusive GST** (GST to be added to the base amount).
-- Display results as a Python list or a nicely formatted table.
-- Simple wrapper function `gstpy()` to handle both modes easily.
-
----
+The `gstpy` module provides an easy and flexible way to calculate GST (Goods and Services Tax) for various item formats such as lists, dictionaries, and integers. It supports both exclusive and inclusive tax calculations and presents the output in multiple formats: list, dictionary, or a well-formatted table using the tabulate package.
+&nbsp;
+&nbsp;
 
 ## Installation
+&nbsp;
+&nbsp;
+
+You can install this module using pip:
+&nbsp;
+&nbsp;
 
 ```bash
 pip install gstpy
 ```
+# GST Class
+&nbsp;
+```from gstpy import GST```
+&nbsp;
 
-## Usage
-Import the module:
+## Constructor
+&nbsp;
+&nbsp;
+```GST(items=0, rate=18, mode="exclusive")```
 
-```python
-from gstpy import gstpy
-```
-## Functions
+Initializes a GST object.
+&nbsp;
+&nbsp;
 
-### `inclusive(amount, gst_rate, output='list')`
+### Parameters:
+- **items**: (int, list, dict) — Item(s) to calculate GST on. Defaults to 0.
+- **rate**: (int, float) — GST rate. Defaults to 18.
+- **mode**: (str) — Either "exclusive" or "inclusive" to specify GST type. Defaults to "exclusive".
+&nbsp;
+&nbsp;
 
-Calculate GST when the tax is already included in the amount.
+### Behavior:
+- Automatically processes the provided items if valid.
+- Supports multiple formats:
+  - List of integers or tuples/lists
+  - Dictionary with item names as keys and prices or [price, quantity] as values
+  - Single integer price
+&nbsp;
+&nbsp;
 
-### `exclusive(amount, gst_rate, output='list')`
+## Methods
+&nbsp;
+&nbsp;
 
-Calculate GST when the tax needs to be added to the base amount.
+### 1. exclusive
+&nbsp;
+&nbsp;
 
-### `gstpy(amount, gst_rate, mode='exclusive', output='list')`
+Calculates GST using the exclusive method (GST is added to the price).
+&nbsp;
+&nbsp;
 
-Wrapper function that calculates GST based on the selected mode.
+#### Parameters:
+- **items**: Items to calculate GST for (int, list, dict)
+- **rate**: GST rate (int, float)
+- **out**: Output format - "list", "dict", or "table"
+&nbsp;
+&nbsp;
 
-## Parameters
+#### Returns:
+- List or dictionary of results (if out is "list" or "dict")
+- Table printed on screen (if out is "table")
+&nbsp;
+&nbsp;
 
-- **amount** (float): The amount on which GST is to be calculated.
-- **gst_rate** (float): GST percentage rate (e.g., 5, 12, 18, 28).
-- **mode** (str): "inclusive" or "exclusive". Default is "exclusive".
-- **output** (str): "list" returns a Python list, "table" prints a formatted table. Default is "list".
+#### Format Supported:
+- Single price (int)
+- List of prices (list)
+- List of [item_name, price]
+- List of [item_name, price, qty]
+- Dict of {item_name: price} or {item_name: [price, qty]}
+&nbsp;
+&nbsp;
 
-# Examples
+### 2. inclusive
+&nbsp;
+&nbsp;
 
-## gstpy() : General GST calculator wrapper function.
+Calculates GST using the inclusive method (price already includes GST).
+&nbsp;
+&nbsp;
 
-```python
-from gstpy import gstpy
-```
-# Exclusive GST example: Calculate GST on base amount ₹1000 at 18%
-result = gstpy(amount=1000, gst_rate=18, mode="exclusive", output="list")
-print(result)
-# Output: [['Actual Amount', 1000], ['GST Amount', 180.0], ['Total Amount', 1180.0]]
+#### Parameters:
+- **items**: Items to calculate GST for (int, list, dict)
+- **rate**: GST rate (int, float)
+- **out**: Output format - "list", "dict", or "table"
+&nbsp;
+&nbsp;
 
-# Inclusive GST example: Calculate GST included in ₹1180 at 18%, print as table
-gstpy(amount=1180, gst_rate=18, mode="inclusive", output="table")
+#### Returns:
+- List or dictionary of results (if out is "list" or "dict")
+- Table printed on screen (if out is "table")
+&nbsp;
+&nbsp;
 
-# Output:
-# ╭───────────────────┬────────────╮
-# │ Description       │   Amount(₹)│
-# ╞═══════════════════╪════════════╡
-# │ Actual Amount     │      1000  │
-# │ GST Amount        │       180  │
-# │ Total Amount      │      1180  │
-# ╰───────────────────┴────────────╯
+#### Format Supported:
+- Single price (int)
+- List of prices (list)
+- List of [item_name, price]
+- List of [item_name, price, qty]
+- Dict of {item_name: price} or {item_name: [price, qty]}
+&nbsp;
+&nbsp;
 
-## Note
+## Special Functions
+&nbsp;
+&nbsp;
 
-The `mode` and `output` parameters are optional. By default, `mode` is set to `"exclusive"` and `output` is set to `"list"`.
+- `ingst(total_price, gst_rate)` → returns only the GST amount
+- `exgst(base_price, gst_rate)` → returns only the GST amount
 
-## `exclusive()` Function
+## Documentation
+&nbsp;
+&nbsp;
 
-```python
-from gstpy import exclusive
-```
-# Calculate GST to be added to base amount ₹1000 at 18% rate
-result = exclusive(amount=1000, gst_rate=18, output="list")
-print(result)
-# Output: [['Actual Amount', 1000], ['GST Amount', 180.0], ['Total Amount', 1180.0]]
+[![Download Documentation](https://img.shields.io/badge/Download%20Documentation-blue.svg)]([link_to_documentation.pdf](https://drive.google.com/file/d/1lzf739rKKWUfgOODhblDckchwvmaKUYR/view?usp=sharing))
+&nbsp;
+&nbsp;
 
-# Display the result in tabular format
-exclusive(amount=1000, gst_rate=18, output="table")
+You can download the full documentation for the `gstpy` module by clicking the button above.
 
-# Output:
-# ╭───────────────────┬────────────╮
-# │ Description       │   Amount(₹)│
-# ╞═══════════════════╪════════════╡
-# │ Actual Amount     │      1000  │
-# │ GST Amount        │       180  │
-# │ Total Amount      │      1180  │
-# ╰───────────────────┴────────────╯
+## Author
+&nbsp;
+&nbsp;
 
-## Note
+Developed by: Ankush  
+- [LinkedIn Profile](https://www.linkedin.com/in/ankush-dhingraa/)  
+- [GitHub Profile](https://github.com/ankush-dhingraa)  
+&nbsp;
+&nbsp;
 
-The `output` parameter is optional and, by default, is set to `"list"`.
-
-## `inclusive()` Function
-
-```python
-from gstpy import inclusive
-```
-# Calculate actual and GST amounts from ₹1180 inclusive of 18% GST
-result = inclusive(amount=1180, gst_rate=18, output="list")
-print(result)
-# Output: [['Actual Amount', 1000.0], ['GST Amount', 180.0], ['Total Amount', 1180.0]]
-
-# Display the result in tabular format
-inclusive(amount=1180, gst_rate=18, output="table")
-
-## Note
-
-The `output` parameter is optional and, by default, is set to `"list"`.
-
-## GitHub Repository
-
-You can find the source code and contribute to the project at the following link:
-
-[GitHub Repository](https://github.com/ankush-dhingraa/gstpy)
-
-## Connect with Us
-
-For updates and support, connect with us on LinkedIn:
-
-[LinkedIn Profile](https://www.linkedin.com/in/ankush-dhingraa/)
+For any issues or bug reports, please [open an issue on GitHub.](https://github.com/ankush-dhingraa/gstpy/issues)
