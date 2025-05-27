@@ -1,14 +1,8 @@
 # gstpy Module
-&nbsp;
-&nbsp;
 
 The `gstpy` module provides an easy and flexible way to calculate GST (Goods and Services Tax) for various item formats such as lists, dictionaries, and integers. It supports both exclusive and inclusive tax calculations and presents the output in multiple formats: list, dictionary, or a well-formatted table using the tabulate package.
-&nbsp;
-&nbsp;
 
 ## Installation
-&nbsp;
-&nbsp;
 
 You can install this module using pip:
 &nbsp;
